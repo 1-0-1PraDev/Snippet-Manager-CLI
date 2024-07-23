@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1720874463460,
+    "title": "Custom highlister using vanilla javascript",
+    "language": "JavaScript",
+    "code": "// Syntax Highlighter using Regular Expressions\r\ndocument.addEventListener('DOMContentLoaded', () => {\r\n    const codeElement = document.getElementById('code');\r\n    const code = codeElement.textContent;\r\n\r\n    const keywords = /\\b(let|const|var|function|return|if|else|for|while|do|switch|case|break|continue)\\b/g;\r\n    const strings = /\"[^\"]*\"|'[^']*'/g;\r\n    const multilineComments = /\\/\\*[\\s\\S]*\\*\\//g; \r\n    const comments = /\\/\\/[^\\n]*/g;\r\n    const properties = /\\.\\w+/g; // Regex to match dot followed by a valid identifier\r\n\r\n\r\n    let highlightedCode = code\r\n        .replace(strings, match => `<span class=\"string\">${match}</span>`)\r\n        .replace(keywords, match => `<span class=\"keyword\">${match}</span>`)\r\n        .replace(multilineComments, match => `<span class=\"multiline-comment\">${match}</span>`)\r\n        .replace(comments, match => `<span class=\"comment\">${match}</span>`)\r\n        .replace(properties, match => `<span class=\"properties\">${match}</span>`);\r\n\r\n    codeElement.innerHTML = highlightedCode;\r\n});"
+  }
+]
